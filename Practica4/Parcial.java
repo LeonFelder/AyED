@@ -1,8 +1,15 @@
 package Practica4;
 import Practica2.ListaGenerica;
 import Practica2.ListaEnlazadaGenerica;
+import Practica3.ArbolBinario;
 
 public class Parcial {
+    public ArbolBinario<Integer> a;
+    
+    public Parcial (ArbolBinario<Integer> a){
+        this.a = a;
+    }
+    
     public int caminosPares2 (ArbolGeneral<Integer> arbol){
         int caminos = -1;
         if (!arbol.esVacio())
@@ -42,5 +49,28 @@ public class Parcial {
                 caminosPares(listaGeneral,l,hijos.proximo());
         }
         l.eliminarEn(l.tamanio() -1);
+    }
+    
+    public boolean resolver (int k){
+        boolean es = false;
+        if (!a.esVacio()){
+            es = resolver(a,k,1);
+        }
+        return es;
+    }
+    
+    public boolean resolver (ArbolBinario<Integer> a,int k,int nodos){
+        boolean es = false;
+        if (!a.esHoja()){
+            if (a.tieneHijoIzquierdo()){
+                es = resolver(a.getHijoIzquierdo(),k,nodos + 1);
+            }
+            if (es && a.tieneHijoDerecho()){
+                es = resolver(a.getHijoDerecho(),k,nodos + 1);
+            }
+        } else if (nodos == k){
+            es = true;
+        }
+        return es;
     }
 }

@@ -2,6 +2,7 @@ package Practica3;
 import Practica2.ColaGenerica;
 import Practica2.ListaGenerica;
 import Practica2.ListaEnlazadaGenerica;
+import Practica4.Parcial;
 
 public class Test {
 
@@ -36,6 +37,9 @@ public class Test {
         //System.out.println(red.retardoReenvio());
         ProfundidadDeArbolBinario prof = new ProfundidadDeArbolBinario(arbol);
         System.out.println(prof.sumaElementosProfundidad(2));
+        Parcial pa = new Parcial(arbol);
+        System.out.println("Hola");
+        System.out.println(pa.resolver(3));
     }
     
 }
