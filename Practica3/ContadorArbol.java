@@ -1,4 +1,5 @@
 package Practica3;
+import Practica2.ListaEnlazadaGenerica;
 
 public class ContadorArbol {
     private ArbolBinario<Integer> arbol;

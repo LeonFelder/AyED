@@ -1,4 +1,5 @@
 package Practica3;
+import Practica2.ColaGenerica;
 
 public class ArbolBinario<T> {
 	private T dato;

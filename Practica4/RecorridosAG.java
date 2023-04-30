@@ -1,4 +1,7 @@
 package Practica4;
+import Practica2.ColaGenerica;
+import Practica2.ListaGenerica;
+import Practica2.ListaEnlazadaGenerica;
 
 public class RecorridosAG {
     public ListaGenerica<Integer> numerosImparesMayoresQuePreOrden (ArbolGeneral<Integer> a, Integer n){

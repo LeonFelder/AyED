@@ -1,4 +1,6 @@
 package Practica4;
+import Practica2.ColaGenerica;
+import Practica2.ListaGenerica;
 
 public class AnalizadorArbol {
     public int devolverMaximoPromedio (ArbolGeneral<AreaEmpresa>arbol){

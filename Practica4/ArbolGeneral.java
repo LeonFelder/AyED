@@ -1,4 +1,7 @@
 package Practica4;
+import Practica2.ColaGenerica;
+import Practica2.ListaGenerica;
+import Practica2.ListaEnlazadaGenerica;
 
 public class ArbolGeneral<T> {
 
@@ -152,5 +155,34 @@ public class ArbolGeneral<T> {
             }
             return ancho;
 	}
-
+        
+        public Boolean esAncestro(T a,T b){
+            ArbolGeneral<T> nodoA;
+            ArbolGeneral<T> nodoB = null;
+            if (!this.esVacio()){
+                nodoA = buscarNodo(this,a);
+                if (nodoA != null)
+                    nodoB = buscarNodo(nodoA,b);
+            }
+            return !(nodoB == null);
+        }
+        
+        private ArbolGeneral<T> buscarNodo (ArbolGeneral<T> arbol,T a){
+            ArbolGeneral<T> nodo = null;
+            ArbolGeneral<T> aux;
+            ColaGenerica<ArbolGeneral<T>> cola = new ColaGenerica<>();
+            cola.encolar(arbol);
+            while (!cola.esVacia() && nodo == null){
+                aux = cola.desencolar();
+                if (aux.getDato() == a)
+                    nodo = aux;
+                else if (aux.tieneHijos()){
+                    ListaGenerica<ArbolGeneral<T>> hijos= aux.getHijos();
+                    hijos.comenzar();
+                    while (!hijos.fin())
+                        cola.encolar(hijos.proximo());
+                }
+            }
+            return nodo;
+        }
 }

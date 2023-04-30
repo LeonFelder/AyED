@@ -1,4 +1,4 @@
-package tp02.ejercicio2;
+package Practica2;
 import java.util.Scanner;
 
 public class TestBalanceo {

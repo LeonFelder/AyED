@@ -1,4 +1,4 @@
-package tp02.ejercicio2;
+package Practica2;
 
 public class PilaGenerica<T>{
     ListaEnlazadaGenerica<T> lista = new ListaEnlazadaGenerica<>();

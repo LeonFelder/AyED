@@ -1,4 +1,7 @@
 package Practica3;
+import Practica2.ColaGenerica;
+import Practica2.ListaGenerica;
+import Practica2.ListaEnlazadaGenerica;
 
 public class Test {
 
