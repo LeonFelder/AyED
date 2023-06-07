@@ -1,5 +1,4 @@
 package Practica2;
-import tp02.ejercicio1.*;
 
 public class Hola {
     public static ListaDeEnterosEnlazada calcularSucesion (int n) {

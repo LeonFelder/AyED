@@ -164,7 +164,7 @@ public class ArbolGeneral<T> {
                 if (nodoA != null)
                     nodoB = buscarNodo(nodoA,b);
             }
-            return !(nodoB == null);
+            return (nodoB != null);
         }
         
         private ArbolGeneral<T> buscarNodo (ArbolGeneral<T> arbol,T a){

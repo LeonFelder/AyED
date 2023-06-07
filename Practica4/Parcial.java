@@ -5,6 +5,7 @@ import Practica3.ArbolBinario;
 
 public class Parcial {
     public ArbolBinario<Integer> a;
+    public ArbolGeneral<Integer> ag;
     
     public Parcial (ArbolBinario<Integer> a){
         this.a = a;
@@ -72,5 +73,93 @@ public class Parcial {
             es = true;
         }
         return es;
+    }
+    
+    public Integer promedioAcotado (ArbolGeneral<Integer> arbol,Integer min, Integer max){
+        ListaGenerica<Integer> lista = new ListaEnlazadaGenerica<>();
+        Integer prom = 0;
+        if (!arbol.esVacio()){
+            promedioAcotado(arbol,min,max,lista);
+            while (!lista.fin())
+                prom =+ lista.proximo();
+            prom = prom/lista.tamanio();
+        }
+        return prom;
+    }
+    
+    public void promedioAcotado (ArbolGeneral<Integer> a,Integer min, Integer max, ListaGenerica<Integer> l){
+        ListaGenerica<ArbolGeneral<Integer>> hijos = a.getHijos();
+        if (!hijos.esVacia()){
+            hijos.comenzar();
+            promedioAcotado(hijos.proximo(),min,max,l);
+        }
+        Integer dato = a.getDato();
+        if ((dato > min) && (dato < max))
+            l.agregarFinal(dato);
+        while (!hijos.fin())
+            promedioAcotado(hijos.proximo(),min,max,l);
+    }
+    
+    public ListaGenerica<Integer []> valoresMayores(int valor, ArbolGeneral<Integer> arbol){
+        ListaGenerica<Integer []> lista = new ListaEnlazadaGenerica<>();
+        if (!arbol.esVacio()){
+            valoresMayores(valor,arbol,lista,0);
+        }
+        return lista;
+    }
+    
+    public void valoresMayores (int valor, ArbolGeneral<Integer> a,ListaGenerica<Integer []> l,int nivel){
+         ListaGenerica<ArbolGeneral<Integer>> hijos = a.getHijos();
+        if (a.tieneHijos()){
+            hijos.comenzar();
+            valoresMayores(valor,hijos.proximo(),l,nivel+1);
+        }
+        Integer dato = a.getDato();
+        if (dato > valor){
+            Integer [] v = new Integer[2];
+            v[0] = dato;
+            v[1] = nivel;
+            l.agregarFinal(v);
+        }
+        if (a.tieneHijos())
+            while(!hijos.fin())
+                valoresMayores(valor,hijos.proximo(),l,nivel+1);
+    }
+    
+    public ListaGenerica<String> valoresEntre (int menor, int mayor, ArbolGeneral<Integer> arbol){
+        ListaGenerica<String> lista = new ListaEnlazadaGenerica<>();
+        if (!arbol.esVacio())
+            valoresEntre(menor,mayor,arbol,lista,0);
+        return lista;
+    }
+    
+    private void valoresEntre (int menor, int mayor, ArbolGeneral<Integer> a,ListaGenerica<String> l,int nivel){
+        if (a.tieneHijos()){
+            ListaGenerica<ArbolGeneral<Integer>> hijos = a.getHijos();
+            hijos.comenzar();
+            while(!hijos.fin())
+                valoresEntre(menor,mayor,a,l,nivel+1);
+        }
+        Integer dato = a.getDato();
+        if ((dato >= menor)&& (dato <= mayor))
+            l.agregarFinal(dato+" nivel "+nivel);
+    }
+    
+    public ListaEnlazadaGenerica<Integer> frontera (){
+        ListaEnlazadaGenerica<Integer> lista = new ListaEnlazadaGenerica<>();
+        if (!ag.esVacio())
+            frontera(ag,lista);
+        return lista;
+    }
+    
+    private void frontera (ArbolGeneral<Integer> a,ListaEnlazadaGenerica<Integer> l){
+        if (!a.esHoja()){
+            ListaGenerica<ArbolGeneral<Integer>> hijos = a.getHijos();
+            hijos.comenzar();
+            while (!hijos.fin())
+                frontera(hijos.proximo(),l);
+        } else if (a.getDato() % 2 == 0){
+            l.agregarFinal(a.getDato());
+        }
     }
 }

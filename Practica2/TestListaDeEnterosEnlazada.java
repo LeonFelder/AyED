@@ -1,5 +1,4 @@
-package P2E1;
-import tp02.ejercicio1.*;
+package Practica2;
 import java.util.Scanner;
 
 public class TestListaDeEnterosEnlazada {

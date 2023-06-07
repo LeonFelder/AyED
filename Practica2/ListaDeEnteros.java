@@ -1,4 +1,4 @@
-package tp02.ejercicio1;
+package Practica2;
 
 public abstract class ListaDeEnteros {
 	
