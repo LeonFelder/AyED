@@ -109,7 +109,7 @@ public class GrafoImplMatrizAdy<T>
     }
 
     @Override
-    public Vertice<T> vetice(int posicion) {
+    public Vertice<T> vertice(int posicion) {
         return vertices.elemento(posicion);
     }
 }

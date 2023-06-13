@@ -104,6 +104,6 @@ public interface Grafo<T> {
 	 * @param posicion
 	 * @return
 	 */
-	public Vertice<T> vetice(int posicion);
+	public Vertice<T> vertice(int posicion);
 
 }
